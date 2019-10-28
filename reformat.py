@@ -22,6 +22,6 @@ for index, row in df_meta.iterrows():
     if row['PostTypeId'] == 1 and row['Id'] in answers_map:
         ask_ans[int(row['OwnerUserId'])] = answers_map[row['Id']]
 
-df_aa = {'answer':list(ask_ans.values()), 'asker':list(ask_ans.keys())}
-df_aa = pd.DataFrame(df_aa, columns=['answer', 'asker'])
+df_aa = {'asker':list(ask_ans.keys()), 'answer':list(ask_ans.values())}
+df_aa = pd.DataFrame(df_aa, columns=['asker', 'answer'])
 df_aa.to_csv('data/ask2answers.tsv', index=False, sep = '\t')
