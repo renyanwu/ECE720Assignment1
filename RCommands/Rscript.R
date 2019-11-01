@@ -1,3 +1,6 @@
+library(sna)
+library(igraph)
+
 ask2answers = read.csv("../data/ask2answers.tsv", sep = '\t')
 net <- graph_from_data_frame(d=ask2answers, directed=T) 
 mat = as.matrix(as_adjacency_matrix(net))
