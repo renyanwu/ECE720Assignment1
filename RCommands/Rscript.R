@@ -1,0 +1,11 @@
+library(sna)
+library(igraph)
+
+ask2answers = read.csv("../data/ask2answers.tsv", sep = '\t')
+net <- graph_from_data_frame(d=ask2answers, directed=T) 
+mat = as.matrix(as_adjacency_matrix(net))
+write.table(mat, file ="../data/askerAnswerer.tsv")
+gplot(mat)
+giant_com = component.largest(mat, connected = "weak", result="graph")
+write.table(giant_com, file ="../data/asker-answer-giant.tsv")
+gplot(giant_com)
